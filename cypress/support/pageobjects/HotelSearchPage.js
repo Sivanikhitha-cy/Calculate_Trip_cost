@@ -73,6 +73,7 @@ class HotelSearch {
         cy.wait(5000)
         cy.get('input[value="FL_HF_7"]').click({force:true})
         }
+        
     hotelDetails(){    
         cy.get('[data-testid="hotel-name"]').first().then((hotel)=>{
             let HotelName=hotel.text()
