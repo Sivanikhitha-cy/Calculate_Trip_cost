@@ -85,7 +85,7 @@ class HotelSearch {
             });
  
         cy.get("[data-testid='hotel-list']").find('a').first().invoke("removeAttr","target").click()
-        cy.wait(4000)
+        cy.wait(40000)
         cy.get(".items-baseline.inline").find('.text-primary').first().then((el)=>{
             const priceText =el.text().trim();
             cy.log(`Per Night Price for 3 rooms: ${priceText}`)
