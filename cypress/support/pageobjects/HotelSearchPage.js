@@ -35,6 +35,45 @@ class HotelSearch {
         cy.get(`[aria-label="${date}"]`).click({force:true});
         cy.wait(500)
         }
+        selectGuests() {
+        cy.get('input[placeholder="Rooms & Guests"]').click({force:true})
+        for (let i = 0; i < 5; i++) {
+            cy.get('[data-testid="room-decrement"]').click({ force: true });
+            cy.get('[data-testid="adult-decrement"]').click({ force: true });
+            cy.wait(100);
+            }
+ 
+        for (let i = 1; i < 3; i++) {
+            cy.get('[data-testid="room-increment"]').click({ force: true });
+            cy.wait(100);
+            }
+ 
+        for (let i = 1; i < 4; i++) {
+            cy.get('[data-testid="adult-increment"]').click({ force: true });
+            cy.wait(100);
+            }}
+   
+    search() {
+        cy.get('[data-testid="search-hotels"]').click({force:true})
+        cy.wait(5000);
+        }
+   
+    sort() {    
+    //Verify highest user rating can be selected from Popularity dropdown. (Nikhitha)
+        cy.get('.border-neutral-100 > div > .body-md').click({force:true})
+        cy.wait(5000)
+        }
+     
+    elevatorAccess() {  
+    //Confirm elevator filter shows only accessible properties
+        cy.get('input[value="SC_UR"]').click({force:true})
+        cy.contains('Facilities').scrollIntoView()
+        //cy.contains('View More').first().click()
+        cy.get(':nth-child(6) > .mx-20').click()
+        cy.wait(5000)
+        cy.get('input[value="FL_HF_7"]').click({force:true})
+        }
+ 
 
 }
 
