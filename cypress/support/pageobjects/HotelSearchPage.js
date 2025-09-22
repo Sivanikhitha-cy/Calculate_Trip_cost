@@ -73,6 +73,27 @@ class HotelSearch {
         cy.wait(5000)
         cy.get('input[value="FL_HF_7"]').click({force:true})
         }
+    hotelDetails(){    
+        cy.get('[data-testid="hotel-name"]').first().then((hotel)=>{
+            let HotelName=hotel.text()
+            cy.log(`Hotel Name : ${HotelName}`)
+            })
+        cy.get('.h5.text-right.text-primary.font-medium', { force: true }).first().then(($price) => {
+            const Price = $price.text().trim();
+            cy.log(`Price: ${Price}`);
+            });
+ 
+        cy.get("[data-testid='hotel-list']").find('a').first().invoke("removeAttr","target").click()
+        cy.wait(4000)
+        cy.get(".items-baseline.inline").find('.text-primary').first().then((el)=>{
+            const priceText =el.text().trim();
+            cy.log(`Per Night Price for 3 rooms: ${priceText}`)
+            const perNightPrice = parseInt(priceText.replace(/[^\d]/g, ''));
+            const numberOfNights = 5;
+            const totalPrice = perNightPrice * numberOfNights;
+            cy.log(`Total Price for ${numberOfNights} nights (3 rooms): ₹${totalPrice}`);
+            });
+        }
  
 
 }

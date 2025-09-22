@@ -32,6 +32,18 @@ describe('Ixigo Hotel and Train Booking', () => {
         HotelSearch.elevatorAccess();
         HotelSearch.hotelDetails();
         });
+    it('"Verify Train Search and Booking Flow with Availability and Sorting Options', function () {
+        TrainSearch.visitTrainPage();
+        TrainSearch.enterOrigin(trainData.origin);
+        TrainSearch.enterDestination(trainData.destination);
+        TrainSearch.selectDate(trainData.dateIndex);
+        TrainSearch.clickBookTickets();
+        TrainSearch.selectTrainCheckbox();
+        TrainSearch.getSortOptions();
+        TrainSearch.clickFirstTrain();
+        TrainSearch.getTrainName()
+        TrainSearch.getAvailabilityDetails()
+        });
 
     
     });
