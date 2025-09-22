@@ -59,7 +59,7 @@ class HotelSearch {
         }
    
     sort() {    
-    //Verify highest user rating can be selected from Popularity dropdown. (Nikhitha)
+    //Verify highest user rating can be selected from Popularity dropdown.
         cy.get('.border-neutral-100 > div > .body-md').click({force:true})
         cy.wait(5000)
         }
