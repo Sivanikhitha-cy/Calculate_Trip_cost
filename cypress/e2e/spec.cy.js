@@ -1,0 +1,38 @@
+import HotelSearch from '../support/pageobjects/HotelSearchPage';
+
+describe('Ixigo Hotel and Train Booking', () => {
+
+    Cypress.on('uncaught:exception', (err, runnable) => {
+        console.warn('Uncaught exception:', err.message);
+        return false;
+        });
+
+    let hotelData;
+    let trainData
+    beforeEach(() => {
+        cy.fixture('HotelSearchData').then((hdata)=>{
+            hotelData=hdata
+            })
+        cy.fixture('TrainSearchData').then((tdata)=>{
+            trainData=tdata
+            });
+        cy.clearCookies();
+        cy.clearLocalStorage();
+        });
+
+    it('"Verify Holiday Home Search, Guest Selection, and Hotel Details with Price Calculation', () => {
+        HotelSearch.visit();
+        HotelSearch.closeAdPopup();
+        HotelSearch.enterCity(hotelData.city);
+        HotelSearch.selectCheckIn(hotelData.checkIn);
+        HotelSearch.selectCheckOut(hotelData.checkOut);
+        HotelSearch.selectGuests(hotelData.guests);
+        HotelSearch.search();
+        HotelSearch.sort();
+        HotelSearch.elevatorAccess();
+        HotelSearch.hotelDetails();
+        });
+
+    
+    });
+
