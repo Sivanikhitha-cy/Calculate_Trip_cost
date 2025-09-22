@@ -1,4 +1,5 @@
 import HotelSearch from '../support/pageobjects/HotelSearchPage';
+import TrainSearch from '../support/pageobjects/TrainSearchPage';
 
 describe('Ixigo Hotel and Train Booking', () => {
 
@@ -32,7 +33,7 @@ describe('Ixigo Hotel and Train Booking', () => {
         HotelSearch.elevatorAccess();
         HotelSearch.hotelDetails();
         });
-    it('"Verify Train Search and Booking Flow with Availability and Sorting Options', function () {
+    it('"Verify Train Search and Booking Flow with Availability and Sorting Options', () => {
         TrainSearch.visitTrainPage();
         TrainSearch.enterOrigin(trainData.origin);
         TrainSearch.enterDestination(trainData.destination);
